@@ -36,7 +36,6 @@ public class WebTest extends TestBase{
                 Arguments.of(List.of("Оплата", "Доставка", "Условия возврата", "Как зарезервировать товар в магазине онлайн", "Как сделать заказ?", "Публичная оферта", "Королевский Клуб - Дисконтная программа", "Королевский Клуб - Бонусная программа", "Защита информации", "Где мой заказ?","Таблица размеров","Сервис Tax Free"))
         );
     }
-
     @MethodSource
     @ParameterizedTest(name = "тестирование отображения разделов в боковом меню")
     @DisplayName("Тест для проверки отображения разделов в боковом меню")
@@ -47,7 +46,6 @@ public class WebTest extends TestBase{
         $$x("//ul[@class = 'm0 p0']/li/a")
                 .filter(Condition.visible).shouldHave(CollectionCondition.containExactTextsCaseSensitive(result));
     }
-
     @ValueSource(strings = {
             "Рассрочка",
             "Адреса магазинов",
