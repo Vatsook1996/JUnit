@@ -11,15 +11,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.List;
 import java.util.stream.Stream;
-
 import static com.codeborne.selenide.Selenide.*;
 
-
 public class WebTest extends TestBase{
-
     @CsvSource(value = {
             "Рассрочка, Рассрочка и кредит",
             "Адреса магазинов, Адреса магазинов «Снежная Королева»",
@@ -31,8 +27,6 @@ public class WebTest extends TestBase{
     void officeHeadButtonTest(String razdel, String result) {
 
         Selenide.open("");
-
-
         $$x("//div//a").findBy(Condition.text(razdel)).click();
         $("div").shouldHave(Condition.text(result));
     }
@@ -50,11 +44,8 @@ public class WebTest extends TestBase{
     void sideMenuTest(List<String> result) {
 
         Selenide.open("shipping/tracking");
-
         $$x("//ul[@class = 'm0 p0']/li/a")
                 .filter(Condition.visible).shouldHave(CollectionCondition.containExactTextsCaseSensitive(result));
-
-
     }
 
     @ValueSource(strings = {
@@ -63,7 +54,6 @@ public class WebTest extends TestBase{
             "Где мой заказ?",
             "Акции",
             "Lookbook"
-
     }
     )
     @ParameterizedTest(name = "тестирование кнопки {0} на странице снежная королева")
@@ -72,8 +62,6 @@ public class WebTest extends TestBase{
     void promotionTest(String razdel) {
 
         Selenide.open("https://snowqueen.ru/");
-
-
         $$x("//div[@class = 'header__top_navigation--right flex between-xs middle-xs']/div/a").findBy(Condition.text(razdel)).click();
         $("div").shouldHave(Condition.text(razdel));
     }
